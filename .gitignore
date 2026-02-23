@@ -5,6 +5,7 @@ yarn-error.log*
 pnpm-debug.log*
 /build
 /dist
+frontend/build/
 .env
 .env.local
 .env.development.local
