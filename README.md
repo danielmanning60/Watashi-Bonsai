@@ -2,7 +2,17 @@
 
 A comprehensive web application for bonsai enthusiasts in the United Kingdom.
 
-![Home page](https://github.com/user-attachments/assets/d8312a49-2f85-4c06-baf0-fd5dbc08fa6b)
+## 🌐 Live Demo
+
+**👉 [https://danielmanning60.github.io/Watashi-Bonsai/](https://danielmanning60.github.io/Watashi-Bonsai/)**
+
+> The live site is automatically deployed via GitHub Actions whenever changes are pushed to `main`.  
+> All pages (Species, Seasonal Guides, Weather) work without a backend using built-in demo data.  
+> Portfolio and login features require the full stack (see local setup below).
+
+![Home page](https://github.com/user-attachments/assets/412de84c-df71-4ab1-93cf-7b13a2b2e66b)
+
+---
 
 ## ✨ Features
 
@@ -14,7 +24,7 @@ A comprehensive web application for bonsai enthusiasts in the United Kingdom.
 
 ---
 
-## 🚀 How to See the App
+## 🚀 Running Locally
 
 ### Option 1 — Frontend only (fastest, no database needed)
 
@@ -29,9 +39,9 @@ npm install
 npm start
 ```
 
-Open **http://localhost:3000** in your browser. That's it. ✅
+Open **http://localhost:3000** in your browser. ✅
 
-> A blue info banner will appear on data pages indicating demo data is shown.
+> A blue info banner will appear on data pages when showing demo data.  
 > To use live data and the portfolio / auth features, run the full stack below.
 
 ---
@@ -83,25 +93,27 @@ npm start                     # starts on http://localhost:3000
 
 ---
 
+## ⚙️ Enabling GitHub Pages (first-time setup)
+
+After merging this PR, enable GitHub Pages in the repository settings once:
+
+1. Go to **Settings → Pages**
+2. Under **Source**, select **GitHub Actions**
+3. The next push to `main` will trigger an automatic deploy to `https://danielmanning60.github.io/Watashi-Bonsai/`
+
+---
+
 ## 🗺️ Pages
 
 | Page | URL | Description |
 |------|-----|-------------|
-| Home | `/` | Hero, feature cards, getting-started guide |
-| Species | `/species` | 10 species cards, difficulty filter |
-| Species Detail | `/species/:id` | Tabbed care guide (watering / fertilizing / pruning) |
-| Seasonal Guides | `/seasonal-guides` | Season selector, care tips, monthly accordion checklist |
-| Weather | `/weather` | UK location search, forecast, bonsai care tips |
-| Portfolio | `/portfolio` | Personal bonsai journal — **requires login** |
-| Profile | `/profile` | Account details — **requires login** |
-
-### Screenshots
-
-**Species Database** — 10 species with difficulty badges and filter
-![Species](https://github.com/user-attachments/assets/9bb78432-02ca-4fec-ad60-b0c35ae7477b)
-
-**Seasonal Guides** — colour-coded seasons and monthly checklists
-![Seasonal Guides](https://github.com/user-attachments/assets/02cc67bf-55e9-47ef-9515-ee07a1623b08)
+| Home | `#/` | Hero, feature cards, getting-started guide |
+| Species | `#/species` | 10 species cards, difficulty filter |
+| Species Detail | `#/species/:id` | Tabbed care guide (watering / fertilizing / pruning) |
+| Seasonal Guides | `#/seasonal-guides` | Season selector, care tips, monthly accordion checklist |
+| Weather | `#/weather` | UK location search, forecast, bonsai care tips |
+| Portfolio | `#/portfolio` | Personal bonsai journal — **requires login** |
+| Profile | `#/profile` | Account details — **requires login** |
 
 ---
 
@@ -113,7 +125,7 @@ npm start                     # starts on http://localhost:3000
 | Backend | Node.js, Express |
 | Database | MongoDB, Mongoose |
 | Auth | JWT (jsonwebtoken + bcryptjs) |
-| Deployment | Docker, Docker Compose |
+| Deployment | GitHub Pages (frontend), Docker Compose (full stack) |
 
 ---
 

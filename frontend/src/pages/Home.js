@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div className="page-container">
       <div className="hero">
-        <h1>🌳 わたし盆栽 — Watashi Bonsai</h1>
+        <h1>🌳 Watashi Bonsai</h1>
         <p>
           Your personal companion for growing, caring for, and documenting the art of bonsai.
           Explore species, follow seasonal guides, and track your collection.

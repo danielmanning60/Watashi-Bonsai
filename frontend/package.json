@@ -2,6 +2,7 @@
   "name": "watashi-bonsai-frontend",
   "version": "1.0.0",
   "description": "Frontend for Watashi Bonsai",
+  "homepage": "https://danielmanning60.github.io/Watashi-Bonsai",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",

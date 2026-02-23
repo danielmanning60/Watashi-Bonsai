@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
@@ -60,9 +60,9 @@ function AppInner() {
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <HashRouter>
         <AppInner />
-      </BrowserRouter>
+      </HashRouter>
     </AuthProvider>
   );
 }
