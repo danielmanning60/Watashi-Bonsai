@@ -44,7 +44,7 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     container_name: watashi-bonsai-web
     ports:
       - "3000:3000"
@@ -67,3 +67,4 @@ volumes:
 networks:
   watashi-network:
     driver: bridge
+
