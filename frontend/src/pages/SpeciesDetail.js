@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { MOCK_SPECIES } from '../data/mockData';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -22,7 +23,11 @@ export default function SpeciesDetail() {
     axios
       .get(`${API_BASE}/api/species/${id}`)
       .then((res) => setSpecies(res.data))
-      .catch(() => setError('Species not found or failed to load.'))
+      .catch(() => {
+        const mock = MOCK_SPECIES.find((s) => s.id === id);
+        if (mock) setSpecies(mock);
+        else setError('Species not found or failed to load.');
+      })
       .finally(() => setLoading(false));
   }, [id]);
 

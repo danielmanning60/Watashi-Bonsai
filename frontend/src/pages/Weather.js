@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MOCK_WEATHER } from '../data/mockData';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -17,7 +18,10 @@ export default function Weather() {
     axios
       .get(`${API_BASE}/api/weather/${encodeURIComponent(loc)}`)
       .then((res) => setWeather(res.data))
-      .catch(() => setError(`Could not fetch weather for "${loc}". Check the location and try again.`))
+      .catch(() => {
+        setWeather({ ...MOCK_WEATHER, location: loc });
+        setError('ℹ️ Backend unavailable — showing demo data.');
+      })
       .finally(() => setLoading(false));
   };
 
@@ -57,7 +61,11 @@ export default function Weather() {
         </button>
       </form>
 
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && (
+        <div className={error.startsWith('ℹ️') ? 'alert alert-info' : 'alert alert-danger'}>
+          {error}
+        </div>
+      )}
 
       {loading && (
         <div className="spinner-wrap"><div className="spinner" /></div>

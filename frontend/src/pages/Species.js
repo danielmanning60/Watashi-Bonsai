@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { MOCK_SPECIES } from '../data/mockData';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -26,7 +27,11 @@ export default function Species() {
         setSpecies(res.data);
         setFiltered(res.data);
       })
-      .catch(() => setError('Failed to load species. Please try again.'))
+      .catch(() => {
+        setSpecies(MOCK_SPECIES);
+        setFiltered(MOCK_SPECIES);
+        setError('ℹ️ Backend unavailable — showing demo data.');
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -53,7 +58,11 @@ export default function Species() {
         <p>Discover bonsai species and their care requirements.</p>
       </div>
 
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && (
+        <div className={error.startsWith('ℹ️') ? 'alert alert-info' : 'alert alert-danger'}>
+          {error}
+        </div>
+      )}
 
       <div className="filter-bar">
         {DIFFICULTY_LEVELS.map((level) => (

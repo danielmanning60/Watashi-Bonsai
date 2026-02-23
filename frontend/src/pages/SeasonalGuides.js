@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MOCK_SEASONAL_GUIDES } from '../data/mockData';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -25,7 +26,10 @@ export default function SeasonalGuides() {
     axios
       .get(`${API_BASE}/api/seasonal-guides`)
       .then((res) => setGuides(Array.isArray(res.data) ? res.data : []))
-      .catch(() => setError('Failed to load seasonal guides.'))
+      .catch(() => {
+        setGuides(MOCK_SEASONAL_GUIDES);
+        setError('ℹ️ Backend unavailable — showing demo data.');
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -50,7 +54,11 @@ export default function SeasonalGuides() {
         <p>Follow the bonsai calendar — care tips and tasks for every season.</p>
       </div>
 
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && (
+        <div className={error.startsWith('ℹ️') ? 'alert alert-info' : 'alert alert-danger'}>
+          {error}
+        </div>
+      )}
 
       {/* Season selector */}
       <div className="cards-grid" style={{ marginBottom: '2rem' }}>
